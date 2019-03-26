@@ -18,10 +18,7 @@ public class Programmers {
 
         String[] test_case4 = {"Jeju", "Jeju", "Jeju", "Jeju", "Jeju"};
         new Solution().solution(1,test_case4);
-
-
     }
-
 
     static class Solution {
         public int solution(int cacheSize, String[] cities) {
