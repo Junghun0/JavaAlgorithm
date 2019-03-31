@@ -1,11 +1,12 @@
+import java.util.Arrays;
+
 public class Programmers {
 
     public static void main(String[] args) {
 
-//        int[][] testcase = {{1, 2}, {2, 3}};
-//        int[][] testcase1 = {{3, 4}, {5, 6}};
-//        new Solution().solution(testcase, testcase1);
-
+        int[][] testcase = {{1, 2}, {2, 3}};
+        int[][] testcase1 = {{3, 4}, {5, 6}};
+        new Solution().solution(testcase, testcase1);
 
         int [][] test = {{1},{2}};
         int [][] test2 = {{3},{4}};
@@ -17,7 +18,7 @@ public class Programmers {
 
 class Solution {
     public int[][] solution(int[][] arr1, int[][] arr2) {
-        int[][] answer = new int[arr1[0].length][arr1[0].length];
+        int[][] answer = new int[arr1.length][arr1[0].length];
 
         for (int i = 0; i < arr1.length; i++) {
 
@@ -27,6 +28,7 @@ class Solution {
 
             }
         }
+        //System.out.println(Arrays.deepToString(answer));
 
         return answer;
     }
