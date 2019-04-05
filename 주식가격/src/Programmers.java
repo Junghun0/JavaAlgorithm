@@ -5,7 +5,7 @@ public class Programmers {
     public static void main(String[] args) {
         //int[] testcase = {1, 2, 3, 2, 3}; // -> 4,3,1,1,0
 
-        int[] testcase = {1,3,4,5,67,2,4,3,2,4}; // -> 4,3,1,1,0
+        int[] testcase = {1,3,4,5,67,2,4,3,2,4};
         new Solution().solution(testcase);
     }
 }
