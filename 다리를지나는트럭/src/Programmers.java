@@ -1,7 +1,7 @@
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
-import java.util.Stack;
+import java.util.Queue;
 
 public class Programmers {
 
@@ -13,24 +13,47 @@ public class Programmers {
 
 class Solution {
     public int solution(int bridge_length, int weight, int[] truck_weights) {
-        int answer = 0;
-        int totalTime = 1;
-        int index = 1;
-
-        List<Integer> bridgeList = new ArrayList<>();
-        bridgeList.add(truck_weights[0]);
-
-        while (bridgeList.isEmpty()) {
-            
-            if (bridgeList.get(index - 1) + truck_weights[index] > weight) {
-                bridgeList.remove(index - 1);
-                bridgeList.add(index, truck_weights[index - 1]);
-            }
-
-
+        int onBridgeWeight = 0;
+        Queue<Truck> truckQueue = new LinkedList<>();
+        for(int truck_weight: truck_weights){
+            truckQueue.offer( new Truck( truck_weight ));
         }
 
+        Queue<Truck> truckOnBridgeQueue = new LinkedList<>();
+        onBridgeWeight += truckQueue.peek().weight;
+        truckOnBridgeQueue.offer(truckQueue.poll());
 
-        return answer;
+        int time=0;
+        while (!truckOnBridgeQueue.isEmpty()){
+            time++;
+
+            for(Truck truck:truckOnBridgeQueue){
+                truck.position++;
+            }
+
+            if(truckOnBridgeQueue.peek().position > bridge_length){
+                onBridgeWeight -= truckOnBridgeQueue.poll().weight;
+            }
+
+            if(truckQueue.isEmpty()==false && (onBridgeWeight +  truckQueue.peek().weight <= weight)){
+                onBridgeWeight += truckQueue.peek().weight;
+                truckQueue.peek().position++;
+                truckOnBridgeQueue.offer( truckQueue.poll() );
+            }
+        }
+        
+        return time;
+    }
+
+    public class Truck {
+
+        int position;
+        int weight;
+
+        public Truck(int weight) {
+            this.position = 0;
+            this.weight = weight;
+        }
+
     }
 }
