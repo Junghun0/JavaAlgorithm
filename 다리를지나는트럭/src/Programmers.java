@@ -41,7 +41,7 @@ class Solution {
                 truckOnBridgeQueue.offer( truckQueue.poll() );
             }
         }
-        
+
         return time;
     }
 
