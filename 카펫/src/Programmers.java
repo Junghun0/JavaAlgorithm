@@ -14,22 +14,19 @@ class Solution {
         int[] answer = {};
         int brownWidth;
         int brownHeight;
-        
+
         int height;
         for (int i = 1; i <= red; i++) {
             height = red / i;
             if (i * height == red && i > height || i == height) {
-                System.out.println("width->" + i + "height->" + height);
                 brownWidth = 2 * (i + 2);
                 brownHeight = 2 * height;
-                System.out.println(brownWidth + "," + brownHeight);
                 if (brownHeight + brownWidth == brown) {
                     System.out.println("가로" + brownWidth + "세로" + brownHeight);
                     return new int[]{i + 2, height + 2};
                 }
             }
         }
-
         return answer;
     }
 }
