@@ -14,8 +14,18 @@ public class Programmers {
 class Solution {
     public int solution(int[][] baseball) {
         int answer = 0;
+        //질문의 수
+        int qNums = baseball.length;
 
 
+        for (int i = 123; i < 987; i++) {
+
+        }
         return answer;
+    }
+
+    private int findStrike(int Question[]){
+
+        return 0;
     }
 }
