@@ -9,7 +9,6 @@ public class Programmers {
 //        String[] testcase = {"sun", "bed", "car"};// return -> ["car", "bed", "sun"]
 //        new Solution().solution(testcase,1);
         String[] testcase2 = {"abce", "abcd", "cdx"};
-        new Kotlin_Solution().solution(testcase2,1);
 
 
 //        new Solution().solution(testcase2, 1);
