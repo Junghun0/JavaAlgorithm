@@ -13,8 +13,35 @@ public class Solution {
     */
     public static void main(String[] args) {
         new Solution().solution(4, new int[]{4, 3, 3});
+        new Solution().solution2(6);
     }
 
+
+    public int solution2(int num){
+        int answer = 0;
+
+        int counter = 0;
+        int tmpNum = num;
+
+        while(tmpNum != 1){
+
+            if (tmpNum % 2 == 0){
+                tmpNum  = tmpNum/2;
+                counter++;
+            }else if(tmpNum % 2 == 1){
+                tmpNum = (tmpNum * 3) + 1;
+                counter++;
+            }
+
+            if (counter == 500){
+                return -1;
+            }
+        }
+
+        answer = counter;
+
+        return answer;
+    }
     public long solution(int n, int[] works) {
         int result = 0;
         for (int i = 0; i < n; i++) {
