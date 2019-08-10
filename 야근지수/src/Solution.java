@@ -59,13 +59,10 @@ public class Solution {
 
     public static boolean getArraySum(int[] works) {
         int sum = 0;
-        for (int i = 0; i < works.length; i++) {
-            sum += works[i];
+        for (int work : works) {
+            sum += work;
         }
-        if (sum == 0) {
-            return true;
-        }
-        return false;
+        return sum == 0;
     }
 
 }
