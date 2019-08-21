@@ -12,7 +12,7 @@ public class Programmers {
         int[] testcase3 = {1};
         new Solution().solution(7, testcase3);
 
-        int[] testcase4 = {6,6,6,6,6};
+        int[] testcase4 = {1,2,3,2,1};
         new Solution().solution(5, testcase4);
 
     }
@@ -48,9 +48,9 @@ class Solution {
                 }
             }
             if (onUser == 0){
-                failList.add(new Fail(j, (double)0));
+                failList.add(new Fail(j, 0.0));
             }else{
-                failList.add(new Fail(j, ((double)onUser / (double)(stagesList.size() + onUser))));
+                failList.add(new Fail(j, ((double)onUser / (stagesList.size() + onUser))));
             }
         }
 
@@ -58,7 +58,6 @@ class Solution {
         for (int i = 0; i < failList.size(); i++) {
             answer[i] = failList.get(i).stage;
         }
-        System.out.println();
 
         return answer;
     }
@@ -75,15 +74,16 @@ class Fail implements Comparable<Fail>{
 
     @Override
     public int compareTo(Fail o) {
-        if (this.failRate < o.failRate){
-            if (this.stage > o.stage){
+        if (o.failRate > this.failRate){
+            return 1;
+        }else if (o.failRate == this.failRate){
+            if (o.stage > this.stage){
+                return -1;
+            }else {
                 return 1;
             }
-        }else if (this.failRate == o.failRate){
-            if (this.stage > o.stage){
-                return 1;
-            }
+        }else{
+            return -1;
         }
-        return -1;
     }
 }
