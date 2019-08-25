@@ -20,7 +20,10 @@ public class Sort {
 //        new Sort().mergeSort(mergeArr, 0, mergeArr.length - 1);
 
         //6. 힙정렬 -> 힙 트리 구조를 이용하는 정렬 방법이다. N
-        new Sort().heapSort(new int[]{7,6,5,8,3,5,9,1,6});
+//        new Sort().heapSort(new int[]{7,6,5,8,3,5,9,1,6});
+
+        //7. 계수정렬 -> 크기를 기준으로 갯수를 세어 정렬한다.
+        new Sort().countingSort(new int[]{1,2,3,5,4,3,2,3,3,5,3,1,2,5,2,1,2,4,1,2,3,4,1,2});
 
 
     }
@@ -294,6 +297,18 @@ public class Sort {
             } while (index < i);
         }
 
+    }
+
+    void countingSort(int[] arr){
+        int[] countArr = new int[5];
+        Arrays.sort(arr);
+        System.out.println(Arrays.toString(arr));
+
+        for (int i = 0; i < arr.length; i++) {
+            countArr[arr[i] - 1]++;
+        }
+
+        System.out.println(Arrays.toString(countArr));
     }
 
 }
