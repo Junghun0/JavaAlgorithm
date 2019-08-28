@@ -40,23 +40,7 @@ class Solution {
     public String solution(int n, int t, int m, String[] timetable) {
         //n - 운행횟수 t - 간격 m - 탈수잇는 수
         String answer = "";
-        PriorityQueue<Integer> timeQueue = new PriorityQueue<>();
-
-        int[] shuttleTime = new int[n];
-        for (int i = 0; i < n; i++) {
-            shuttleTime[i] += 540 + (t * i);
-        }
-        System.out.println("shuttleTime-> "+Arrays.toString(shuttleTime));
-
-        for (int i = 0; i < timetable.length; i++) {
-            timeQueue.add(getTime(timetable[i]));
-        }
-
-        System.out.println(timeQueue);
-
-        while (!timeQueue.isEmpty()){
-            System.out.println(timeQueue.poll());
-        }
+        Arrays.sort(timetable);
 
         return answer;
     }
