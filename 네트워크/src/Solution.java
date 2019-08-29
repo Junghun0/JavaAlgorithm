@@ -45,7 +45,7 @@ public class Solution {
 //    }
 
     public int solution(int n, int[][] computers){
-        Stack<Integer> stk = new Stack<Integer>();
+        Stack<Integer> stk = new Stack<>();
         boolean[] b = new boolean[n];
         int ret = 0;
 
