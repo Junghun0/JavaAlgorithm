@@ -8,12 +8,12 @@ public class Solution {
         new Solution().solution(5); // 8
         new Solution().solution(4); // 5
         new Solution().solution(3); // 3
-        new Solution().solution(200);
+        new Solution().solution(30);
     }
 
     public long solution(int n) {
         long answer;
-        answer = findStep(n);
+        answer = findStep(n+1);
         System.out.println(answer);
         if (answer >= 1234567){
             answer = answer % 1234567;
@@ -22,20 +22,15 @@ public class Solution {
     }
 
     public long findStep(int step){
-        long last1, last2, result = 0;
-
-        if(step <= 1)
+        long[] temp = new long[step+1];
+        if (step <= 2){
             return 1;
-
-        last1 = 1;
-        last2 = 1;
-
-        for(long i=1; i < step; i++) {
-            result = last1 + last2;
-            last1 = last2;
-            last2 = result;
         }
-
-        return result;
+        if (temp[step] != 0){
+            return temp[step];
+        }else{
+            temp[step] = findStep(step - 1) + findStep(step - 2);
+            return temp[step];
+        }
     }
 }
