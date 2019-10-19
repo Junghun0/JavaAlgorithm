@@ -7,7 +7,7 @@ public class Solution {
         입력값 〉	[3, 1, 2], 5
         기댓값 〉	1
         */
-        new Solution().solution(new int[]{3, 1, 2}, 5);
+        new Solution().solution(new int[]{3, 1, 2}, 6);
 
         new Solution().solution(new int[]{6, 2, 3}, 4);
 
@@ -25,60 +25,32 @@ public class Solution {
     public int solution(int[] food_times, long k) {
         int answer = 0;
 
-        //5 나누기 배열길이 = 1 .. 2 (모두 1씩 빼고 -> 2,0,2 두번째 까지먹음 즉 마지막 )
-        //몫 -> 배열길이만큼 루프 돌고 / 나머지만큼 빼기 시작 ( 0 체크하면서 ) 그다음 순서 출력 끝
+        int countLoop = (int)k / food_times.length;//1 .. 2
 
-        long minusTime = (k / food_times.length);
-        long lastTime = (k % food_times.length);
-        boolean[] checkZeroArr = new boolean[food_times.length];
+        int eatCount = 0;
+        int index = 0;
 
-        System.out.println("lastTime " + lastTime);
-
-        //몫 -> 배열길이만큼 루프 돌기
-        for (int i = 0; i < food_times.length; i++) {
-            if (food_times[i] != 0) {
-                food_times[i] -= minusTime;
-            } else {
-                checkZeroArr[i] = true;
-            }
-        }
-        System.out.println("루프만큼 돌기 " + Arrays.toString(food_times));
-        int result = 0;
-
-        //나머지 -> 나머지만큼 0번째 부터 루프 돌기
-
-        if (lastTime == 0) {
-            int aa = 0;
-            for (int i = 0; i < food_times.length; i++) {
-                if (food_times[i] != 0) {
-                    aa = i;
-                    break;
-                }
-            }
-            result = aa + 1;
-            answer = result;
-        } else {
-
-            for (int i = 0; i < lastTime; i++) {
-
-                if (food_times[i] == 0) {
-                    //0번째 부터 나머지만큼 0일때
-                    result = (i + 1) + 1;
-                } else {
-                    //0아님
-                    result = (i + 1);
-                }
-
+        for (int i = 0; i < countLoop * food_times.length; i++) {
+            int indexLoop = i % food_times.length ;
+            if (food_times[indexLoop] == 0 && indexLoop != food_times.length - 1) {
+                food_times[indexLoop + 1]--;
+            }else if (food_times[indexLoop] == 0){
+                food_times[0]--;
+            }else {
+                food_times[indexLoop]--;
             }
 
-            if (result + 1 >= food_times.length) {
-                result = (result) % food_times.length;
-            }
-
-            answer = result + 1;
+//            if (food_times[i-1] != 0) {
+//                food_times[i-1]--;
+//            }else{//0이면
+//                System.out.println("zero");
+//            }
         }
 
-        System.out.println(answer);
+        System.out.println(Arrays.toString(food_times));
+
+
+
         return answer;
     }
 

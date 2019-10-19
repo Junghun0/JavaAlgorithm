@@ -4,54 +4,39 @@ import java.util.*;
 
 public class Programmers {
     public static void main(String[] args) {
-        new Solution().solution(30, 4, 7); //return 3
+        new Solution().solution(8, 4, 7); //return 3
 //        new Solution().solution(16, 2, 9); //return 3
     }
 }
 
 class Solution {
+    // 1,2, 3,4, 5,6, 7,8, 9,10, 11,12, 13,14, 15,16 -> 16개, 8개
+    // 1, 4,   5, 7,   10, 11,   13, 15              -> 8개 , 4개
+    // 4,7, 10,13                                    -> 4개 , 2개
+
+    // 1,2 ,3,4 ,5,6 ,7,8 -1 (  3 ,  6 )
+    // 1 ,  4   , 5  , 7  -2 (  1 ,  3 )
+    //  4      ,    7     -3 (  1 ,  2 )
     public int solution(int n, int a, int b) {
-        int answer = 1;
+        int answer = 0;
+        while(a != b) {
 
-        List<Integer> teamList = new ArrayList<>();
+            if (a%2 == 0){
+                a /= 2;
+            }else {
+                a /= 2;
+                a++;
+            }
 
-        for (int i = 1; i <= n; i = i+2) {
-            if (teamList.size()%2 == 0 && teamList.contains(b) && teamList.size() == (teamList.size()&-teamList.size())){
-                break;
+            if (b%2 == 0){
+                b /= 2;
             }else{
-                teamList.add(i);
-                teamList.add(i+1);
+                b /= 2;
+                b++;
             }
-        }
-        System.out.println(teamList);
-
-        for (int k = 0; k < teamList.size() - 1; k++) {
-            for (int i = 1; i <= teamList.size(); i = i+2) {
-                if (teamList.get(i- 1) == a || teamList.get(i-1) == b){
-                    teamList.remove(i);
-                    teamList.add(i, 0);
-                }else if (teamList.get(i) == b || teamList.get(i) == a){
-                    teamList.remove(i-1);
-                    teamList.add(i-1, 0);
-                }else if (teamList.get(i-1) != 0){
-                    teamList.remove(i-1);
-                    teamList.add(i-1,0);
-                }
-                System.out.println(teamList);
-            }
-            clearListValue(teamList);
             answer++;
-            System.out.println(teamList+"answer"+answer);
+
         }
-
         return answer;
-
-    }
-
-    public List<Integer> clearListValue(List<Integer> data){
-        List<Integer> zeroList = new ArrayList<>();
-        zeroList.add(0);
-        data.removeAll(zeroList);
-        return data;
     }
 }
