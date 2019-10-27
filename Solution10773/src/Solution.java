@@ -1,9 +1,5 @@
 import java.io.*;
-import java.util.Collections;
 import java.util.Stack;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 public class Solution {
 
@@ -18,23 +14,19 @@ public class Solution {
 
         for (int i = 0; i < dataSize; i++) {
             int inputNums = Integer.parseInt(reader.readLine());
-            if (inputNums != 0){
+            if (inputNums != 0) {
                 numStack.push(inputNums);
-            } else{
+            } else {
                 numStack.pop();
             }
         }
 
-        System.out.println(numStack);
-
         int sum = 0;
-        for (int i = 0; i < numStack.size(); i++) {
-            System.out.println(numStack.peek());
-//            sum += numStack.peek();
-            numStack.pop();
+        for (Integer integer : numStack) {
+            sum += integer;
         }
-
-        System.out.println(sum);
-
+        writer.write(sum + "");
+        writer.flush();
+        writer.close();
     }
 }
