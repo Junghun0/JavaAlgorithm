@@ -25,21 +25,20 @@ public class Solution {
 
     private static String checkString(String validString) {
         Stack<Character> stack = new Stack<>();
-        String result = "yes";
+        String result = "";
         for (int i = 0; i < validString.length(); i++) {
             if (validString.charAt(i) == '(' || validString.charAt(i) == '[')
                 stack.push(validString.charAt(i));
             else if (validString.charAt(i) == ')') {
                 if (stack.isEmpty() || stack.pop() != '(') {
-                    result = "no";
                     break;
                 }
             } else if (validString.charAt(i) == ']') {
                 if (stack.isEmpty() || stack.pop() != '[') {
-                    result = "no";
                     break;
                 }
             }
+            result = "yes";
         }
 
         return result;
