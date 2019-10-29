@@ -11,14 +11,9 @@ public class Solution {
         int down = Integer.parseInt(inputs[1]);//b 1
         int top = Integer.parseInt(inputs[2]);//v 5
 
-        int temp = top - up;
-        int day = temp / (up - down);
+        double result = (top - up) / (double) (up - down);
 
-        if (temp % (up - down) != 0) {
-            day++;
-        }
-
-        writer.write(day+"");
+        writer.write((int)Math.ceil(result + 1)+"");
         writer.flush();
         writer.close();
     }
