@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.Arrays;
+import java.util.HashMap;
 
 public class Solution {
 
@@ -20,6 +21,7 @@ public class Solution {
 
         System.out.println(findResult1(inputs));
         System.out.println(result2);
+        System.out.println(findResult3(inputs));
         System.out.println(result4);
 
         /*
@@ -27,6 +29,21 @@ public class Solution {
         중앙값 : N개의 수들을 증가하는 순서로 나열했을 경우 그 중앙에 위치하는 값
         최빈값 : N개의 수들 중 가장 많이 나타나는 값
         범위 : N개의 수들 중 최댓값과 최솟값의 차이 */
+    }
+
+    private static int findResult3(int[] data) {
+        HashMap<Integer, Integer> hashMap = new HashMap<>();
+
+        for (int i = 0; i < data.length; i++) {
+            if (hashMap.containsKey(data[i])) {
+                int mCount = hashMap.get(data[i]) + 1;
+                hashMap.put(data[i], mCount);
+            } else {
+                hashMap.put(data[i], 1);
+            }
+        }
+        System.out.println(hashMap);
+        return 0;
     }
 
     private static int findResult1(int[] inputs) {
