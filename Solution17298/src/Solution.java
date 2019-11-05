@@ -1,38 +1,34 @@
 import java.io.*;
-import java.util.Arrays;
+import java.util.Stack;
+import java.util.StringTokenizer;
 
 public class Solution {
-
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws Exception{
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(System.out));
-
-        int testCaseLength = Integer.parseInt(reader.readLine());
-        int[] inputData = new int[testCaseLength];
-        int[] result = new int[testCaseLength];
-        String[] inputs = reader.readLine().split(" ");
-
-        for (int i = 0; i < testCaseLength; i++) {
-            inputData[i] = Integer.parseInt(inputs[i]);
+        int n = Integer.parseInt(reader.readLine());
+        StringTokenizer st = new StringTokenizer(reader.readLine());
+        int [] a = new int[n];
+        for(int i=0; i<n; i++) {
+            a[i] = Integer.parseInt(st.nextToken());
         }
-
-        for (int i = 0; i < inputData.length; i++) {
-            int test = inputData[i];
-            for (int j = i+1; j < inputData.length; j++) {
-                int number;
-                if (test < inputData[j]){
-                    number = inputData[j];
-                    result[i] = number;
-                    break;
-                }
+        Stack<Integer> s = new Stack<>();
+        int [] ans = new int[n];
+        StringBuilder sb = new StringBuilder();
+        for(int i=n-1; i>=0; i--) {
+            while(!s.isEmpty() && s.peek() <= a[i]) {
+                s.pop();
             }
-            if (result[i] == 0) {
-                result[i] = -1;
+            if(s.isEmpty()) {
+                ans[i] = -1;
+            } else {
+                ans[i] = s.peek();
             }
-            writer.write(result[i]+" ");
+            s.push(a[i]);
         }
-
-        writer.flush();
-        writer.close();
+        for(int k : ans) {
+            sb.append(k+" ");
+        }
+        System.out.print(sb.toString());
     }
 }
+
