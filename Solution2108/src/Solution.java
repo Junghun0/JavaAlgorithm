@@ -1,6 +1,5 @@
 import java.io.*;
-import java.util.Arrays;
-import java.util.HashMap;
+import java.util.*;
 
 public class Solution {
 
@@ -42,7 +41,8 @@ public class Solution {
                 hashMap.put(data[i], 1);
             }
         }
-        System.out.println(hashMap);
+
+
         return 0;
     }
 
